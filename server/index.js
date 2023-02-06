@@ -29,7 +29,7 @@ const db = mysql.createConnection({
    user:  "admin",
    password: "vipularora",
    port: 3306,
-   database: "carpages-canada",
+   database: "carpages_canada_sql",
    
 });
 app.use(function (request, res, next) {
