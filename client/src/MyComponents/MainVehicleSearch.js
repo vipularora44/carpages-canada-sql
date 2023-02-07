@@ -203,15 +203,30 @@ const [getMaxMileage,setgetMaxMileage]=useState('');
 const navigateMe=useNavigate();
 
 const FetchResult=()=>
-{console.log("query"+query);
+{
+  console.log("query"+query);
+    const a=getMinprice.length;
+    const b=getMaxprice.length;
+    const aa=getMinprice.slice(1,a);
+    const bb=getMaxprice.slice(1,b);
+
   if(query.length <=0)
   {
    
-   navigateMe("/search-results",{state:{Make_name:getmake,Model_name:getModel,City_name:"Edmonton, AB",Min_price:getMinprice,Max_price:getMaxprice}});
+   navigateMe("/search-results",{state:{Make_name:getmake,Model_name:getModel,Min_price:aa,Max_price:bb}});
   }
   else
   {
-    navigateMe("/search-results",{state:{Make_name:getmake,Model_name:getModel,City_name:query,Min_price:getMinprice,Max_price:getMaxprice}});
+    const a=query.indexOf(",");
+    if(a>0)
+    {
+      navigateMe("/search-results",{state:{Make_name:getmake,Model_name:getModel,City_name:query,Min_price:aa,Max_price:bb}});
+    }
+    else if(a<0)
+    {
+      navigateMe("/search-results",{state:{Make_name:getmake,Model_name:getModel,province_name:query,Min_price:aa,Max_price:bb}});
+    }
+    
 
   }
 }
