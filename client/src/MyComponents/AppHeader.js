@@ -36,7 +36,7 @@ export default function AppHeader(props) {
  {
   console.log("first"+Item);
  
-    Axios.get("http://localhost:3001/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+    Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
       if(res.data.auth)
        {
          setLogIn(true);
@@ -46,7 +46,7 @@ export default function AppHeader(props) {
      });
     }
     
-  Axios.get("http://localhost:3001/categories/makes").then((res1)=>{
+  Axios.get("http://15.207.89.39/categories/makes").then((res1)=>{
     setmakes(res1.data);
     console.log(res1.data);
   });
@@ -64,7 +64,7 @@ const SignOut =()=>{
   localStorage.removeItem('dataItems');
   myStore.dispatch(RESET_ACTION);
   setLogIn(false);
-  Axios.post("http://localhost:3001/users/Logout",{pathname: pathname}).then((res1)=>{
+  Axios.post("http://15.207.89.39/users/Logout",{pathname: pathname}).then((res1)=>{
     
     console.log(res1.data);
   });
@@ -75,7 +75,7 @@ const SignOut_team =()=>{
   localStorage.removeItem('dataItems');
   myStore.dispatch(RESET_ACTION);
   setLogIn(false);
-  Axios.post("http://localhost:3001/Logout").then((res1)=>{
+  Axios.post("http://15.207.89.39/Logout").then((res1)=>{
     
     console.log(res1.data);
   });

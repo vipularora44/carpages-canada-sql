@@ -84,7 +84,7 @@ useEffect(()=>{
  
   Item = JSON.parse(localStorage.getItem('dataItems'));
   
-  Axios.get("http://localhost:3001/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+  Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
     
      console.log(res.data.auth);
       if(!res.data.auth)
@@ -100,12 +100,12 @@ useEffect(()=>{
         setuserType(Item["usertype"]);
       }
      });
-      Axios.post("http://localhost:3001/users/getDealerDetails",{userId:Item["userId"]}).then((res)=>{
+      Axios.post("http://15.207.89.39/users/getDealerDetails",{userId:Item["userId"]}).then((res)=>{
         console.log(res.data);
         setuserData(res.data);
       });
 
-Axios.get("http://localhost:3001/users/userDeviceInfo").then((res)=>{
+Axios.get("http://15.207.89.39/users/userDeviceInfo").then((res)=>{
   console.log(res.data);
   setbrowser_info(res.data[0].browser);
   setbrowser_version(res.data[0].version);
@@ -113,7 +113,7 @@ Axios.get("http://localhost:3001/users/userDeviceInfo").then((res)=>{
   setplatform_info(res.data[0].platform);
  
 });
-Axios.post("http://localhost:3001/users/InsertuserDeviceInfo",{userId:Item["userId"]}).then((res)=>{
+Axios.post("http://15.207.89.39/users/InsertuserDeviceInfo",{userId:Item["userId"]}).then((res)=>{
   console.log(res.data);
 });
 GetuserDeviceInfo();
@@ -162,14 +162,14 @@ useEffect(()=>
 },[MylistingOptions,MylistingOptionsIndex,MyWatchlistOptions,MyWatchlistOptionsIndex]);
 const getMyListings=()=>
 {
-  Axios.post("http://localhost:3001/listings/getUserListings",{userId:userId}).then((res)=>{
+  Axios.post("http://15.207.89.39/listings/getUserListings",{userId:userId}).then((res)=>{
     console.log(res.data);
     setmyListings(res.data);
 });
 }
 const getUserIwatchListID=()=>
 {
-  Axios.post("http://localhost:3001/watchlist/getUserWatchList",{userId:userId}).then((res1)=>{
+  Axios.post("http://15.207.89.39/watchlist/getUserWatchList",{userId:userId}).then((res1)=>{
     console.log(res1.data);
     setwatchList(res1.data);
 });
@@ -197,7 +197,7 @@ const RollID=()=>
   })
   if(IDs.length>0)
   {
-    Axios.post("http://localhost:3001/watchlist/getUserWatchList1",{listings:IDs}).then((res1)=>{
+    Axios.post("http://15.207.89.39/watchlist/getUserWatchList1",{listings:IDs}).then((res1)=>{
       console.log(res1.data);
       setgetListings(res1.data);
 });
@@ -272,7 +272,7 @@ console.log("B_F_M..."+B_f_M);
  }
  const changePass=()=>
  {
-  Axios.post("http://localhost:3001/users/updatePassword",{userId:userId,user_pass:newpassword}).then((res)=>{
+  Axios.post("http://15.207.89.39/users/updatePassword",{userId:userId,user_pass:newpassword}).then((res)=>{
       console.log(res.data);
       
     });
@@ -298,7 +298,7 @@ console.log("B_F_M..."+B_f_M);
      formData.append('image', image);
      formData.append('usertype',userType);
      formData.append('imageChanged',"Yes");
-      Axios.post("http://localhost:3001/users/updatetuser", formData ).then ((response1) =>{
+      Axios.post("http://15.207.89.39/users/updatetuser", formData ).then ((response1) =>{
          console.log(response1);
       });
   }
@@ -317,7 +317,7 @@ console.log("B_F_M..."+B_f_M);
       formData.append('altcontact',altcontactNo.length>0?altcontactNo:altcontactNo1);
       formData.append('usertype',userType);
       formData.append('imageChanged',"No");
-       Axios.post("http://localhost:3001/users/updatetuser", formData ).then ((response1) =>{
+       Axios.post("http://15.207.89.39/users/updatetuser", formData ).then ((response1) =>{
           console.log(response1.data.affectedRows);
          
        });
@@ -325,7 +325,7 @@ console.log("B_F_M..."+B_f_M);
  }
  const DeleteWatchlist=(e)=>
  {
-  Axios.post("http://localhost:3001/watchlist/deleteWatchList",{userId:userId,listing_id:e}).then ((response1) =>{
+  Axios.post("http://15.207.89.39/watchlist/deleteWatchList",{userId:userId,listing_id:e}).then ((response1) =>{
          console.log(response1.data.affectedRows);
          if(response1.data.affectedRows > 0)
          {
@@ -357,7 +357,7 @@ console.log("B_F_M..."+B_f_M);
   if(newbuyfromhome===true)
   {
     setB_f_M("yes");
-    Axios.post("http://localhost:3001/users/updatetBuyFromHome",{userId:userId,B_f_M:B_f_M}).then ((response1) =>{
+    Axios.post("http://15.207.89.39/users/updatetBuyFromHome",{userId:userId,B_f_M:B_f_M}).then ((response1) =>{
       console.log(response1.data);
      
    });
@@ -365,7 +365,7 @@ console.log("B_F_M..."+B_f_M);
   if(newbuyfromhome===false)
   {
     setB_f_M("no");
-    Axios.post("http://localhost:3001/users/updatetBuyFromHome",{userId:userId,B_f_M:B_f_M}).then ((response1) =>{
+    Axios.post("http://15.207.89.39/users/updatetBuyFromHome",{userId:userId,B_f_M:B_f_M}).then ((response1) =>{
       console.log(response1.data);
      
    });
@@ -382,14 +382,14 @@ const changeSaleStatus=(ID,status)=>
   console.log("ID..."+ID+"status.."+status);
   if(status==="unsold")
   {
-    Axios.post("http://localhost:3001/listings/updatetSaleStatus",{ListingId:ID,status:"sold"}).then ((response1) =>{
+    Axios.post("http://15.207.89.39/listings/updatetSaleStatus",{ListingId:ID,status:"sold"}).then ((response1) =>{
       console.log(response1.data);
      
    });
   }
   else if(status==="sold")
   {
-    Axios.post("http://localhost:3001/listings/updatetSaleStatus",{ListingId:ID,status:"unsold"}).then ((response1) =>{
+    Axios.post("http://15.207.89.39/listings/updatetSaleStatus",{ListingId:ID,status:"unsold"}).then ((response1) =>{
       console.log(response1.data);
      
    });
@@ -400,7 +400,7 @@ const changeSaleStatus=(ID,status)=>
 const GetuserDeviceInfo=()=>
 {
   Item = JSON.parse(localStorage.getItem('dataItems'));
-  Axios.post("http://localhost:3001/users/GetuserDeviceInfo",{userId:Item["userId"]}).then((res)=>{
+  Axios.post("http://15.207.89.39/users/GetuserDeviceInfo",{userId:Item["userId"]}).then((res)=>{
     console.log(res.data);
     setdeviceList(res.data);
   });
@@ -408,7 +408,7 @@ const GetuserDeviceInfo=()=>
 
 const DeleteDevices_Browser=(e)=>
 {
-  Axios.post("http://localhost:3001/users/DeleteuserDeviceInfo",{Id:e}).then((res)=>{
+  Axios.post("http://15.207.89.39/users/DeleteuserDeviceInfo",{Id:e}).then((res)=>{
     console.log(res.data);
     if(res.data.affectedRows)
     {

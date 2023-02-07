@@ -35,7 +35,7 @@ export default function DealerInventory() {
     console.log("Seller_ID:::"+Seller_ID);
     useEffect(()=>{
  
-    Axios.post("http://localhost:3001/users/getDealerDetails",{userId:Seller_ID}).then((res3)=>{
+    Axios.post("http://15.207.89.39/users/getDealerDetails",{userId:Seller_ID}).then((res3)=>{
         console.log(res3.data);
        setselleredata(res3.data);
         setBFM(res3.data[0].buy_from_home);
@@ -48,21 +48,21 @@ export default function DealerInventory() {
 
    const getDealerListings=()=>
    {
-    Axios.post("http://localhost:3001/listings/getDealerListings",{userId:Seller_ID}).then((res3)=>{
+    Axios.post("http://15.207.89.39/listings/getDealerListings",{userId:Seller_ID}).then((res3)=>{
       console.log(res3.data);
       setfetchListings(res3.data);
     });
    }
    const GetYears=()=>
    {
-    Axios.get("http://localhost:3001/categories/years").then((res3)=>{
+    Axios.get("http://15.207.89.39/categories/years").then((res3)=>{
       console.log(res3.data);
       setyears(res3.data);
     });
    }
    const GetAllMakes=()=>
    {
-    Axios.post("http://localhost:3001/listings/getDealervehicleCount",{userId:Seller_ID}).then((res3)=>{
+    Axios.post("http://15.207.89.39/listings/getDealervehicleCount",{userId:Seller_ID}).then((res3)=>{
       console.log(res3.data);
       setfetch_Makes_total(res3.data);
     });
@@ -92,7 +92,7 @@ export default function DealerInventory() {
     {
       setselectedMake(e);
     }
-    Axios.post("http://localhost:3001/listings/getDealervehicleModelCount",{userId:Seller_ID,make_name:e}).then((res3)=>{
+    Axios.post("http://15.207.89.39/listings/getDealervehicleModelCount",{userId:Seller_ID,make_name:e}).then((res3)=>{
       console.log(res3.data);
       setfetch_Models_total(res3.data);
     });
@@ -108,7 +108,7 @@ export default function DealerInventory() {
     {
       setbodyStyle(e);
     }
-    Axios.post("http://localhost:3001/listings/getDealervehicleCount",{userId:Seller_ID,body_style:e}).then((res3)=>{
+    Axios.post("http://15.207.89.39/listings/getDealervehicleCount",{userId:Seller_ID,body_style:e}).then((res3)=>{
         console.log(res3.data);
         setfetch_Makes_total(res3.data);
       });
@@ -156,7 +156,7 @@ export default function DealerInventory() {
    {
     if(bodyStyle || selectedMake || selectedModel ||selectedMinyear || selectedMaxyear)
     {
-      Axios.post("http://localhost:3001/listings/getDealerRefineInventory",{Seller_ID:Seller_ID,bodyStyle:bodyStyle,selectedMake:selectedMake,selectedModel:selectedModel,selectedMinyear:selectedMinyear,selectedMaxyear:selectedMaxyear}).then((res3)=>{
+      Axios.post("http://15.207.89.39/listings/getDealerRefineInventory",{Seller_ID:Seller_ID,bodyStyle:bodyStyle,selectedMake:selectedMake,selectedModel:selectedModel,selectedMinyear:selectedMinyear,selectedMaxyear:selectedMaxyear}).then((res3)=>{
         console.log(res3.data);
         setfetchListings(res3.data);
       });

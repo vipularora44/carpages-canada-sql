@@ -37,7 +37,7 @@ export default function Admin(props) {
     if(Item != null)
      {
      console.log("first"+Item);
-      Axios.get("http://localhost:3001/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+      Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
         console.log("Response"+JSON.stringify(res));
       if(res.data.auth===true)
        {

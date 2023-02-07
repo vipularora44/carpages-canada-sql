@@ -38,15 +38,15 @@ export default function AddCarListing() {
     var Item = JSON.parse(localStorage.getItem('dataItems'));
     console.log("item:"+Item);
     setUserId(Item["userId"]);
-    
-      Axios.get("http://localhost:3001/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+ 
+      Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
         console.log(res);
         if(!res.data.auth)
         {
            navigate("/");
         }
        });
-       Axios.post("http://localhost:3001/users/getDealerDetails",{userId:Item["userId"]}).then((res)=>{
+       Axios.post("http://15.207.89.39/users/getDealerDetails",{userId:Item["userId"]}).then((res)=>{
         console.log(res.data);
         setuserData(res.data);
        });
@@ -74,16 +74,16 @@ console.log("STATE SAFETY"+myState.safety);
 let safety,assistance,lighting,infotainment,connectivity,comfort,convenience,exterior,security="";
 
  useEffect(()=>{
-  Axios.get("http://localhost:3001/categories/makes").then((res)=>{
+  Axios.get("http://15.207.89.39/categories/makes").then((res)=>{
     console.log(res);
     setmakesList(res.data);
   });
 
-  Axios.get("http://localhost:3001/categories/years").then((res1)=>{
+  Axios.get("http://15.207.89.39/categories/years").then((res1)=>{
     console.log(res1);
     setyearList(res1.data);
   });
-  Axios.get("http://localhost:3001/listings/getListingId").then((res3)=>{
+  Axios.get("http://15.207.89.39/listings/getListingId").then((res3)=>{
     console.log("id Number"+JSON.stringify(res3.data[0]["MaximumValue"]));
     setgetlistingId(JSON.stringify(res3.data[0]["MaximumValue"]));
   });
@@ -310,7 +310,7 @@ const [vehexterior,setvehexterior] = useState([]);
  } 
  const GetModels=(e)=>
  {
-  Axios.post("http://localhost:3001/categories/models",{makename:e}).then((res) =>{
+  Axios.post("http://15.207.89.39/categories/models",{makename:e}).then((res) =>{
     console.log(res.data );
     setmodelList(res.data);
   });
@@ -463,7 +463,7 @@ console.log("transmission"+transmission);
     fd.append('vehicle_top_features',myState.vehicle_top_features);
     fd.append('buyFromHome',buyFromHome);
     
-    Axios.post("http://localhost:3001/listings/insert_listing", fd ).then((res) =>{
+    Axios.post("http://15.207.89.39/listings/insert_listing", fd ).then((res) =>{
         console.log(res.data );
     
     });
@@ -508,7 +508,7 @@ console.log("transmission"+transmission);
       
       
     }
-    Axios.post("http://localhost:3001/listings/insert_listing", fd ).then((res) =>{
+    Axios.post("http://15.207.89.39/listings/insert_listing", fd ).then((res) =>{
         console.log(res.data );
     
     });

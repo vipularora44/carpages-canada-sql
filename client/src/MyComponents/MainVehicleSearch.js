@@ -56,15 +56,15 @@ export default function MainVehicleSearch() {
     const SearchBarLocation={SearchBarLocation:query};
     localStorage.setItem("User_Choice_Location",JSON.stringify(SearchBarLocation));
     
-    Axios.get("http://localhost:3001/categories/getprices").then((res)=>{
+    Axios.get("http://15.207.89.39/categories/getprices").then((res)=>{
       setprice(res.data);
       console.log(res.data);
       })
-      Axios.get("http://localhost:3001/categories/makes").then((res1)=>{
+      Axios.get("http://15.207.89.39/categories/makes").then((res1)=>{
         setmakes(res1.data);
         console.log(res1.data);
       })
-        Axios.get("http://localhost:3001/categories/popularcities").then((res2)=>{
+        Axios.get("http://15.207.89.39/categories/popularcities").then((res2)=>{
           setshowedCities(res2.data);
           console.log(res2.data);
      })
@@ -104,14 +104,14 @@ export default function MainVehicleSearch() {
                 }
 
   const showcities=()=>{
-    Axios.get("http://localhost:3001/categories/onlycities").then((res2)=>{
+    Axios.get("http://15.207.89.39/categories/onlycities").then((res2)=>{
       setCities(res2.data);
       console.log(res2.data);
   })
   };
 
   const showmodels=(e)=>{
-    Axios.post("http://localhost:3001/categories/models",{makename:e}).then((res)=>{
+    Axios.post("http://15.207.89.39/categories/models",{makename:e}).then((res)=>{
       setmodels(res.data);
 
   })

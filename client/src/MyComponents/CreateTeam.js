@@ -46,7 +46,7 @@ export default function CreateTeam() {
        };
   
     useEffect(()=>{
-      Axios.get("http://localhost:3001/users/getUsers").then((response) =>{
+      Axios.get("http://15.207.89.39/users/getUsers").then((response) =>{
         console.log(response.data);
       // setsignUp_Data(response.data); 
     });
@@ -99,7 +99,7 @@ export default function CreateTeam() {
       formData.append('usertype',"employee");
       formData.append('buyFromHome',"no");
       formData.append('isVerified',"true");
-       Axios.post("http://localhost:3001/users/insertuser", formData ).then ((response1) =>{
+       Axios.post("http://15.207.89.39/users/insertuser", formData ).then ((response1) =>{
           console.log(response1);
           if(response1.data.insertId)
           {
@@ -123,7 +123,7 @@ export default function CreateTeam() {
       formData.append('usertype',"employee");
       formData.append('buyFromHome',"no");
       formData.append('isVerified',"true");
-         Axios.post("http://localhost:3001/users/insertuser", formData ).then ((response1) =>{
+         Axios.post("http://15.207.89.39/users/insertuser", formData ).then ((response1) =>{
             console.log(response1);
             if(response1.data.insertId)
             {
