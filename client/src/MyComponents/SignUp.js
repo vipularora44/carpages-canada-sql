@@ -49,7 +49,7 @@ export default function SignUp (props)  {
      };
 
   useEffect(()=>{
-    Axios.get("http://15.207.89.39/users/getUsers").then((response) =>{
+    Axios.get("http://3.111.35.215/users/getUsers").then((response) =>{
       console.log(response.data);
     // setsignUp_Data(response.data); 
   });
@@ -103,7 +103,7 @@ export default function SignUp (props)  {
     formData.append('buyFromHome',"no");
     formData.append('isVerified',"false");
     formData.append('user_status',"unblock");
-     Axios.post("http://15.207.89.39/users/insertuser", formData ).then ((response1) =>{
+     Axios.post("http://3.111.35.215/users/insertuser", formData ).then ((response1) =>{
         console.log(response1);
         if(response1.data.insertId)
         {
@@ -128,7 +128,7 @@ export default function SignUp (props)  {
     formData.append('buyFromHome',"no");
     formData.append('isVerified',"false");
     formData.append('user_status',"unblock");
-       Axios.post("http://15.207.89.39/users/insertuser", formData ).then ((response1) =>{
+       Axios.post("http://3.111.35.215/users/insertuser", formData ).then ((response1) =>{
           console.log(response1);
           if(response1.data.insertId)
           {

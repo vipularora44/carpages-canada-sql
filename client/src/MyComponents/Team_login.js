@@ -34,7 +34,7 @@ export default function SignIn() {
   useEffect(()=>{
 
     console.log("kidan");
-    Axios.get("http://15.207.89.39/users/signIn").then((res)=>{
+    Axios.get("http://3.111.35.215/users/signIn").then((res)=>{
       console.log(res);
 
       if(res.data.LoggedIn == true)
@@ -66,7 +66,7 @@ console.log("loginStatus..."+loginStatus);
  
   const login =()=>{
    // console.log("working"+email+password);
-     Axios.post("http://15.207.89.39/users/signIn", 
+     Axios.post("http://3.111.35.215/users/signIn", 
      {Email:email,passWord:password}).then(
        (res)=>{
         console.log(res.data.message+"***"+JSON.stringify(res.data.result[0].is_verified));

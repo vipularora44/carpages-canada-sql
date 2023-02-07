@@ -79,14 +79,14 @@ export default function ShowDealer() {
         keywordLocation = JSON.parse(localStorage.getItem('User_Choice_Location'));
         if(state.showDeal)
         {
-          Axios.post("http://15.207.89.39/users/search_bar",{keyword:state.showDeal,location:keywordLocation["SearchBarLocation"]}).then((res)=>{
+          Axios.post("http://3.111.35.215/users/search_bar",{keyword:state.showDeal,location:keywordLocation["SearchBarLocation"]}).then((res)=>{
             console.log(res.data);
             setshowDealerList(res.data);
             });
         }
         if(state.dealer_alphabet)
         {
-          Axios.post("http://15.207.89.39/users/getDealerByAlphabet",{alphabet:state.dealer_alphabet}).then((res)=>{
+          Axios.post("http://3.111.35.215/users/getDealerByAlphabet",{alphabet:state.dealer_alphabet}).then((res)=>{
             console.log(res.data);
             setshowDealerList(res.data);
             });
@@ -97,7 +97,7 @@ export default function ShowDealer() {
       else if(!state)
       {
         
-        Axios.get("http://15.207.89.39/users/allUsers").then((res)=>{
+        Axios.get("http://3.111.35.215/users/allUsers").then((res)=>{
             console.log(res.data);
             setshowDealerList(res.data);
             });
@@ -109,7 +109,7 @@ export default function ShowDealer() {
       }
       if(type)
       {
-        Axios.post("http://15.207.89.39/users/getDealerByType",{userType:type}).then((res)=>{
+        Axios.post("http://3.111.35.215/users/getDealerByType",{userType:type}).then((res)=>{
             console.log(res.data);
             setshowDealerList(res.data);
             });
@@ -139,7 +139,7 @@ export default function ShowDealer() {
      
      if(status==="unblock")
      {
-       Axios.post("http://15.207.89.39/users/updatetUserStatus",{UserId:ID,status:"block"}).then ((response1) =>{
+       Axios.post("http://3.111.35.215/users/updatetUserStatus",{UserId:ID,status:"block"}).then ((response1) =>{
          console.log(response1.data);
         
       });
@@ -147,7 +147,7 @@ export default function ShowDealer() {
      }
      else if(status==="block")
      {
-       Axios.post("http://15.207.89.39/users/updatetUserStatus",{UserId:ID,status:"unblock"}).then ((response1) =>{
+       Axios.post("http://3.111.35.215/users/updatetUserStatus",{UserId:ID,status:"unblock"}).then ((response1) =>{
          console.log(response1.data);
         
       });
@@ -257,7 +257,7 @@ export default function ShowDealer() {
         console.log(a+'....'+b+"..."+c+"..."+d+"..."+f+"....");
             if(LocName ==="")
             {
-                Axios.post("http://15.207.89.39/users/allDealers",{dealer:"dealer"}).then((res1)=>{
+                Axios.post("http://3.111.35.215/users/allDealers",{dealer:"dealer"}).then((res1)=>{
                     console.log(res1.data);
                     setshowDealerList(res1.data);
                    
@@ -267,7 +267,7 @@ export default function ShowDealer() {
             {
                 if(a>0)
                 {
-                    Axios.post("http://15.207.89.39/users/dealerbycity",{city_name:LocName}).then((res1)=>{
+                    Axios.post("http://3.111.35.215/users/dealerbycity",{city_name:LocName}).then((res1)=>{
                     console.log(res1.data);
                     setshowDealerList(res1.data);
                     });
@@ -278,7 +278,7 @@ export default function ShowDealer() {
                     else if(LocName==="New Brunswick"){provinceAbrivation="NB";}else if(LocName==="Northwest Territories"){provinceAbrivation="NT";}else if(LocName==="Nova Scotia"){provinceAbrivation="NS";}else if(LocName==="Nunavut"){provinceAbrivation="NU";}
                     else if(LocName==="Prince Edward Island"){provinceAbrivation="PE";}else if(LocName==="Quebec"){provinceAbrivation="QC";}else if(LocName==="Saskatchewan"){provinceAbrivation="SK";}
                     else if(LocName==="Yukon"){provinceAbrivation="YT";}
-                    Axios.post("http://15.207.89.39/users/dealerbyprovince",{province:LocName}).then((res1)=>{
+                    Axios.post("http://3.111.35.215/users/dealerbyprovince",{province:LocName}).then((res1)=>{
                     console.log(res1.data);
                     setshowDealerList(res1.data);
                     });
@@ -294,7 +294,7 @@ export default function ShowDealer() {
      }
      let brokers=[];
      useEffect(()=>{
-       Axios.get("http://15.207.89.39/categories/onlycities").then((res1)=>{
+       Axios.get("http://3.111.35.215/categories/onlycities").then((res1)=>{
          console.log(res1.data);
         setLocationname(res1.data);
        });
@@ -394,7 +394,7 @@ export default function ShowDealer() {
       if(a>0)
       {
         //alert("if 1"+query1);
-       Axios.post("http://15.207.89.39/users/getDealerByCity",{city_name:query1,dealer_name:dealerName}).then((res1)=>{
+       Axios.post("http://3.111.35.215/users/getDealerByCity",{city_name:query1,dealer_name:dealerName}).then((res1)=>{
          console.log(res1.data);
          setshowDealerList(res1.data);
        });
@@ -402,7 +402,7 @@ export default function ShowDealer() {
       else if(a<0)
       {
         //alert("else if 2"+query1);
-       Axios.post("http://15.207.89.39/users/getDealerByProvince",{province:query1,dealer_name:dealerName}).then((res1)=>{
+       Axios.post("http://3.111.35.215/users/getDealerByProvince",{province:query1,dealer_name:dealerName}).then((res1)=>{
          console.log(res1.data);
          setshowDealerList(res1.data);
        });
@@ -410,7 +410,7 @@ export default function ShowDealer() {
        if(query1==="" && dealerName.length>0)
       {
         //alert("else if 2"+query1);
-        Axios.post("http://15.207.89.39/users/getDealerByOnlyName",{dealer_name:dealerName}).then((res1)=>{
+        Axios.post("http://3.111.35.215/users/getDealerByOnlyName",{dealer_name:dealerName}).then((res1)=>{
           console.log(res1.data);
           setshowDealerList(res1.data);
         });

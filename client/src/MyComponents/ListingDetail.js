@@ -56,22 +56,22 @@ export default function ListingDetail() {
     
      useEffect(()=>{
  
-            Axios.post("http://15.207.89.39/listings/getListingDetail",{ListingId:Listing_ID}).then((res)=>{
+            Axios.post("http://3.111.35.215/listings/getListingDetail",{ListingId:Listing_ID}).then((res)=>{
               console.log(res.data);
               setvehicledata(res.data);
               setMyvehiclePrice(res.data[0].price);
             });
-            Axios.post("http://15.207.89.39/listings/getListingImages",{ListingId:Listing_ID}).then((res1)=>{
+            Axios.post("http://3.111.35.215/listings/getListingImages",{ListingId:Listing_ID}).then((res1)=>{
               console.log(res1.data);
              setvehicleImages(res1.data);
              
             });
-            Axios.post("http://15.207.89.39/users/getDealerDetails",{userId:Seller_ID}).then((res3)=>{
+            Axios.post("http://3.111.35.215/users/getDealerDetails",{userId:Seller_ID}).then((res3)=>{
               console.log(res3.data);
               setselleredata(res3.data);
               setBFM(res3.data[0].buy_from_home);
             });
-           Axios.post("http://15.207.89.39/listings/getmoreListings",{userId:Seller_ID,ListingId:Listing_ID}).then((res2)=>{
+           Axios.post("http://3.111.35.215/listings/getmoreListings",{userId:Seller_ID,ListingId:Listing_ID}).then((res2)=>{
               console.log(res2.data);
               setmoreListings(res2.data);
             });
@@ -250,13 +250,13 @@ console.log("currentPos..."+currentPos);
    {
    const Item = JSON.parse(localStorage.getItem('dataItems'));
   
-    Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+    Axios.get("http://3.111.35.215/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
       
        console.log(res.data.auth);
         if(res.data.auth)
         {
           
-          Axios.post("http://15.207.89.39/watchlist/insertWatchList",{userId:Item["userId"],listing_id:Listing_ID}).then((res)=>{
+          Axios.post("http://3.111.35.215/watchlist/insertWatchList",{userId:Item["userId"],listing_id:Listing_ID}).then((res)=>{
             console.log(res.data);
 
            });
@@ -298,7 +298,7 @@ console.log("currentPos..."+currentPos);
       queryMake=val.make_name;
       queryModel=val.model_name;
     });
-    Axios.post("http://15.207.89.39/users/sendQueryMessagePhone",{queryName:queryName,queryPhone_No:queryPhone_No,queryEmail:queryEmail,queryYear:queryYear,queryMake:queryMake,queryModel:queryModel}).then((res)=>{
+    Axios.post("http://3.111.35.215/users/sendQueryMessagePhone",{queryName:queryName,queryPhone_No:queryPhone_No,queryEmail:queryEmail,queryYear:queryYear,queryMake:queryMake,queryModel:queryModel}).then((res)=>{
       console.log(res.data);
      });
    }

@@ -111,7 +111,7 @@ export default function SearchResults() {
   Item = JSON.parse(localStorage.getItem('dataItems'));
      if(Item != null)
     {
-  Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+  Axios.get("http://3.111.35.215/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
     
      console.log(res.data.auth);
       if(res.data.auth=== true)
@@ -126,13 +126,13 @@ export default function SearchResults() {
     displayListings();
     
     if(!vehicleClass && !makeName && !city && !MyState )
-    {Axios.get("http://15.207.89.39/listings/get_allListings").then((res)=>{
+    {Axios.get("http://3.111.35.215/listings/get_allListings").then((res)=>{
       console.log(res.data);
       setfetchListings(res.data);
      });
      
      
-     Axios.get("http://15.207.89.39/listings/get_allListings_images").then((res)=>{
+     Axios.get("http://3.111.35.215/listings/get_allListings_images").then((res)=>{
      // console.log(res.data);
      setfetchImages(res.data);
      });}
@@ -140,7 +140,7 @@ export default function SearchResults() {
      {
           if(MyState.showresult)
           {
-            Axios.post("http://15.207.89.39/listings/search_bar",{keyword:MyState.keyWord}).then((res)=>{
+            Axios.post("http://3.111.35.215/listings/search_bar",{keyword:MyState.keyWord}).then((res)=>{
               console.log(res.data);
               setfetchListings(res.data);
               });
@@ -148,20 +148,20 @@ export default function SearchResults() {
      }
      
       
-            Axios.get("http://15.207.89.39/categories/viewcategory").then((res1)=>{
+            Axios.get("http://3.111.35.215/categories/viewcategory").then((res1)=>{
            //   console.log(res1.data);
               setvehiclecategory(res1.data);
             });
 
-            Axios.get("http://15.207.89.39/categories/getprices").then((res2)=>{
+            Axios.get("http://3.111.35.215/categories/getprices").then((res2)=>{
             //  console.log(res2.data);
               setvehicleprice(res2.data);
             });
-            Axios.get("http://15.207.89.39/categories/years").then((res3)=>{
+            Axios.get("http://3.111.35.215/categories/years").then((res3)=>{
          //     console.log(res3.data);
               setvehicleyears(res3.data);
             });
-            Axios.get("http://15.207.89.39/categories/onlycities").then((res1)=>{
+            Axios.get("http://3.111.35.215/categories/onlycities").then((res1)=>{
             //  console.log(res1.data);
               setfetchLocations(res1.data);
             });
@@ -174,21 +174,21 @@ export default function SearchResults() {
     { 
       if(type=="private")
       {
-        Axios.post("http://15.207.89.39/listings/FilterByListingSellertype",{ListingSellertype:"private"}).then((res22)=>{
+        Axios.post("http://3.111.35.215/listings/FilterByListingSellertype",{ListingSellertype:"private"}).then((res22)=>{
           console.log(res22.data);
         setfetchListings(res22.data);
          });
       }
       else if(type=="dealer")
       {
-        Axios.post("http://15.207.89.39/listings/FilterByListingSellertype",{ListingSellertype:"dealer"}).then((res22)=>{
+        Axios.post("http://3.111.35.215/listings/FilterByListingSellertype",{ListingSellertype:"dealer"}).then((res22)=>{
           console.log(res22.data);
         setfetchListings(res22.data);
          });
       }
       else if(type=="sold")
       {
-        Axios.post("http://15.207.89.39/listings/FilterByListingSellertype",{ListingSellertype:"sold"}).then((res22)=>{
+        Axios.post("http://3.111.35.215/listings/FilterByListingSellertype",{ListingSellertype:"sold"}).then((res22)=>{
           console.log(res22.data);
         setfetchListings(res22.data);
          });
@@ -199,7 +199,7 @@ export default function SearchResults() {
     {
       console.log("IF city");
       console.log("hanji city");
-      Axios.post("http://15.207.89.39/listings/FilterByCityListings",{cityname:city}).then((res11)=>{
+      Axios.post("http://3.111.35.215/listings/FilterByCityListings",{cityname:city}).then((res11)=>{
         console.log(res11.data);
         setfetchListings(res11.data);
        });
@@ -207,7 +207,7 @@ export default function SearchResults() {
     else if(vehicleClass)
     { console.log("IF vehicleClass");
     console.log("hanji kidan");
-      Axios.post("http://15.207.89.39/listings/FilterByClassListings",{vehicleClass:vehicleClass}).then((res22)=>{
+      Axios.post("http://3.111.35.215/listings/FilterByClassListings",{vehicleClass:vehicleClass}).then((res22)=>{
         console.log(res22.data);
       setfetchListings(res22.data);
        });
@@ -216,7 +216,7 @@ export default function SearchResults() {
    else if(makeName)
     {console.log("IF makeName");
     console.log("hanji makeName");
-      Axios.post("http://15.207.89.39/listings/FilterByMakeListings",{makename:makeName}).then((res33)=>{
+      Axios.post("http://3.111.35.215/listings/FilterByMakeListings",{makename:makeName}).then((res33)=>{
         console.log(res33.data);
         setfetchListings(res33.data);
        });
@@ -224,7 +224,7 @@ export default function SearchResults() {
     else if(MyState)
     {console.log("IF MyState");
     console.log("hanji MyState");
-      Axios.post("http://15.207.89.39/listings/Find_A_Car",MyState).then((res43)=>{
+      Axios.post("http://3.111.35.215/listings/Find_A_Car",MyState).then((res43)=>{
         console.log(res43.data);
         setfetchListings(res43.data);
        });
@@ -276,7 +276,7 @@ export default function SearchResults() {
   
   if(status==="unsold")
   {
-    Axios.post("http://15.207.89.39/listings/updatetSaleStatus",{ListingId:ID,status:"sold"}).then ((response1) =>{
+    Axios.post("http://3.111.35.215/listings/updatetSaleStatus",{ListingId:ID,status:"sold"}).then ((response1) =>{
       console.log(response1.data);
      
    });
@@ -284,7 +284,7 @@ export default function SearchResults() {
   }
   else if(status==="sold")
   {
-    Axios.post("http://15.207.89.39/listings/updatetSaleStatus",{ListingId:ID,status:"unsold"}).then ((response1) =>{
+    Axios.post("http://3.111.35.215/listings/updatetSaleStatus",{ListingId:ID,status:"unsold"}).then ((response1) =>{
       console.log(response1.data);
      
    });
@@ -331,7 +331,7 @@ const PushArr=(e)=>
 {
   if(e.length > 0)
   {
-    Axios.post("http://15.207.89.39/categories/getchoosedmakes",{makesarr:e}).then((res4)=>{
+    Axios.post("http://3.111.35.215/categories/getchoosedmakes",{makesarr:e}).then((res4)=>{
       console.log(res4.data);
       setfetchModels(res4.data); 
     });
@@ -339,7 +339,7 @@ const PushArr=(e)=>
   else if(AllMakes.length == fetchMakes.length)
   {
      console.log("AllMakes working");
-     Axios.post("http://15.207.89.39/categories/getchoosedmakes",{makesarr:AllMakes}).then((res4)=>{
+     Axios.post("http://3.111.35.215/categories/getchoosedmakes",{makesarr:AllMakes}).then((res4)=>{
       console.log(res4.data);
       setfetchModels(res4.data); 
     });
@@ -353,7 +353,7 @@ const PushArr=(e)=>
 }
 const MakesFetch=()=>
 {
-  Axios.get("http://15.207.89.39/categories/makes").then((res)=>{
+  Axios.get("http://3.111.35.215/categories/makes").then((res)=>{
           //   console.log(res.data);
               setfetchMakes(res.data);
             });
@@ -368,7 +368,7 @@ const handleSellerId= (e)=>
 {
   //setsellerID(e);
   console.log("Results"+e);
-  Axios.post("http://15.207.89.39/users/getDealerDetails",{sellerid:e}).then((res4)=>{
+  Axios.post("http://3.111.35.215/users/getDealerDetails",{sellerid:e}).then((res4)=>{
       console.log(res4.data);
     //  setfetchModels(es4.data); 
     });
@@ -759,7 +759,7 @@ const Apply=()=>
  {
   window.history.replaceState(null, "New Page Title", "/search-results")
 
-  Axios.post("http://15.207.89.39/listings/getFilterListings",{buyfromHome:buyfromHome,cityname:query1,bodyStyle:bodyStyle,allmodels:allModels,allmakes:AllMakes,makename:fetchMakes1,modelname:fetchModels1,minyears:minyears,maxyears:maxyears,minprice:minprice,maxprice:maxprice,minmileage:minmileage,maxmileage:maxmileage,transmission:sel,drivetrain:drivetrain,used_new:sel1}).then((res)=>{
+  Axios.post("http://3.111.35.215/listings/getFilterListings",{buyfromHome:buyfromHome,cityname:query1,bodyStyle:bodyStyle,allmodels:allModels,allmakes:AllMakes,makename:fetchMakes1,modelname:fetchModels1,minyears:minyears,maxyears:maxyears,minprice:minprice,maxprice:maxprice,minmileage:minmileage,maxmileage:maxmileage,transmission:sel,drivetrain:drivetrain,used_new:sel1}).then((res)=>{
     console.log(res.data);
     setfetchListings(res.data);
    });
@@ -804,7 +804,7 @@ const Apply=()=>
    {
       if(e.key==="Enter")
       {
-        Axios.post("http://15.207.89.39/listings/search_bar",{keyword:e.target.value}).then((res)=>{
+        Axios.post("http://3.111.35.215/listings/search_bar",{keyword:e.target.value}).then((res)=>{
           console.log(res.data);
           setfetchListings(res.data);
           });

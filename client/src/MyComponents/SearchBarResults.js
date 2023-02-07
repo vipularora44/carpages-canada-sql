@@ -28,11 +28,11 @@ export default function SearchBarResults() {
       if(MyState.keyWord !=="")
     {  
         keywordLocation = JSON.parse(localStorage.getItem('User_Choice_Location'));
-            Axios.post("http://15.207.89.39/listings/search_bar",{keyword:MyState.keyWord,location:keywordLocation["SearchBarLocation"]}).then((res)=>{
+            Axios.post("http://3.111.35.215/listings/search_bar",{keyword:MyState.keyWord,location:keywordLocation["SearchBarLocation"]}).then((res)=>{
             console.log(res.data);
             setlistingsResults(res.data);
             });
-             Axios.post("http://15.207.89.39/users/search_bar",{keyword:MyState.keyWord,location:keywordLocation["SearchBarLocation"]}).then((res)=>{
+             Axios.post("http://3.111.35.215/users/search_bar",{keyword:MyState.keyWord,location:keywordLocation["SearchBarLocation"]}).then((res)=>{
              console.log(res.data);
              setDealerResults(res.data);
              });

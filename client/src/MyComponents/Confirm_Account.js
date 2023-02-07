@@ -28,7 +28,7 @@ export default function Confirm_Account() {
  useEffect(()=>{
   if(state.User_email !="")
   {
-    Axios.post("http://15.207.89.39/users/signIn",{Email:state.User_email} ).then ((response1) =>{
+    Axios.post("http://3.111.35.215/users/signIn",{Email:state.User_email} ).then ((response1) =>{
       console.log(response1);
       
    });

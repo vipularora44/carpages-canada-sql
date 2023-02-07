@@ -79,7 +79,7 @@ export default function DealerSignup() {
            formData.append('image', Image);
            formData.append('usertype',"dealer");
            formData.append('buyFromHome',"no");
-            Axios.post("http://15.207.89.39/users/insertuser", formData ).then ((response1) =>{
+            Axios.post("http://3.111.35.215/users/insertuser", formData ).then ((response1) =>{
                console.log(response1);
             });
         }
@@ -98,7 +98,7 @@ export default function DealerSignup() {
             formData.append('altcontact',altcontactno);
             formData.append('usertype',"dealer");
             formData.append('buyFromHome',"no");
-             Axios.post("http://15.207.89.39/users/insertuser", formData ).then ((response1) =>{
+             Axios.post("http://3.111.35.215/users/insertuser", formData ).then ((response1) =>{
                 console.log(response1);
              });
           }

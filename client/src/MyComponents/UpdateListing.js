@@ -50,14 +50,14 @@ const dispatchR=useDispatch();
     console.log("item:"+Item);
     setUserId(Item["userId"]);
     
-      Axios.get("http://15.207.89.39/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
+      Axios.get("http://3.111.35.215/users/isUserAuthenticated",{headers:{"x-access-token":Item["token"]},}).then((res)=>{
         console.log(res);
         if(!res.data.auth)
         {
            navigate("/");
         }
        });
-       Axios.post("http://15.207.89.39/listings/getListingDetail",{ListingId:Listing_ID}).then((res)=>{
+       Axios.post("http://3.111.35.215/listings/getListingDetail",{ListingId:Listing_ID}).then((res)=>{
         console.log(res.data);
         setupdatelistingdata(res.data);
        });
@@ -83,12 +83,12 @@ console.log("userData"+JSON.stringify(userData));
 
 
  useEffect(()=>{
-  Axios.get("http://15.207.89.39/categories/makes").then((res)=>{
+  Axios.get("http://3.111.35.215/categories/makes").then((res)=>{
     console.log(res);
     setmakesList(res.data);
   });
 
-  Axios.get("http://15.207.89.39/categories/years").then((res1)=>{
+  Axios.get("http://3.111.35.215/categories/years").then((res1)=>{
     console.log(res1);
     setyearList(res1.data);
   });
@@ -382,7 +382,7 @@ const onTransmission=(e)=>
 const DeleteImage=(e,f,d)=>
 {
    console.log("Delete Working");
-   Axios.post("http://15.207.89.39/listings/deleteListingImages", {listingId:e,imageName:f,imageId:d}).then((res) =>{
+   Axios.post("http://3.111.35.215/listings/deleteListingImages", {listingId:e,imageName:f,imageId:d}).then((res) =>{
         if(res.data)
         {
           VehicleImages();
@@ -397,7 +397,7 @@ console.log("imageOpt...."+imageOpt);
 const PrimaryImage=(e,f,g)=>
 {
 
-  Axios.post("http://15.207.89.39/listings/updatePrimaryListingImage", {listingId:e,imageName:f,imageId:g}).then((res) =>{
+  Axios.post("http://3.111.35.215/listings/updatePrimaryListingImage", {listingId:e,imageName:f,imageId:g}).then((res) =>{
     console.log(res.data );
 
 });
@@ -426,7 +426,7 @@ const InsertNewImages=()=>
       {
         fd1.append('images', pictures[index]); 
        }
-        Axios.post("http://15.207.89.39/listings/insert_New_Images", fd1).then((res) =>{
+        Axios.post("http://3.111.35.215/listings/insert_New_Images", fd1).then((res) =>{
           console.log(res.data );
           });
    }
@@ -435,7 +435,7 @@ const InsertNewImages=()=>
 }
 const VehicleImages=()=>
 {
-  Axios.post("http://15.207.89.39/listings/getListingImages",{ListingId:Listing_ID}).then((res1)=>{
+  Axios.post("http://3.111.35.215/listings/getListingImages",{ListingId:Listing_ID}).then((res1)=>{
     console.log(res1.data);
    setvehicleImages(res1.data);
    
@@ -509,7 +509,7 @@ useEffect(()=>{
 },[make_name1,pictures,deleteImage])
 const GetModels=(e)=>
 {
- Axios.post("http://15.207.89.39/categories/models",{makename:e}).then((res) =>{
+ Axios.post("http://3.111.35.215/categories/models",{makename:e}).then((res) =>{
    console.log(res.data );
    setmodelList(res.data);
  });
@@ -572,7 +572,7 @@ const SaveData =()=>
     
     fd.append('vehicle_top_features',myState.vehicle_top_features?myState.vehicle_top_features:vehicle_top_features1);
    
-    Axios.post("http://15.207.89.39/listings/updateListing", fd ).then((res) =>{
+    Axios.post("http://3.111.35.215/listings/updateListing", fd ).then((res) =>{
         console.log(res.data );
     
     });
