@@ -44,7 +44,7 @@ app.use(function (request, res, next) {
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors({
-   origin:["http://localhost:3000"],
+   origin:["https://carpages-canada-sql-frnt.onrender.com"],
    methods:["POST","GET"],
    withCredentials:false,
 }));
