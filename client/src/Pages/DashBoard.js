@@ -21,27 +21,27 @@ export default function DashBoard() {
   const navigate=useNavigate();
 
   useEffect(()=>{
-    Axios.get("http://localhost:3001/listings/get_allListings").then((res)=>{
+    Axios.get("http://3.111.35.215/listings/get_allListings").then((res)=>{
       console.log(res.data);
       setListings(res.data);
      });
-     Axios.post("http://localhost:3001/listings/FilterByListingSellertype",{ListingSellertype:"sold"}).then((res)=>{
+     Axios.post("http://3.111.35.215/listings/FilterByListingSellertype",{ListingSellertype:"sold"}).then((res)=>{
       console.log(res.data);
       setsoldListings(res.data);
      });
-     Axios.post("http://localhost:3001/listings/FilterByListingSellertype",{ListingSellertype:"private"}).then((res)=>{
+     Axios.post("http://3.111.35.215/listings/FilterByListingSellertype",{ListingSellertype:"private"}).then((res)=>{
       console.log(res.data);
       setprivateListings(res.data);
      });
-     Axios.post("http://localhost:3001/listings/FilterByListingSellertype",{ListingSellertype:"dealer"}).then((res)=>{
+     Axios.post("http://3.111.35.215/listings/FilterByListingSellertype",{ListingSellertype:"dealer"}).then((res)=>{
       console.log(res.data);
       setdealerListings(res.data);
      });
-     Axios.post("http://localhost:3001/users/getDealerByType",{userType:"private"}).then((res)=>{
+     Axios.post("http://3.111.35.215/users/getDealerByType",{userType:"private"}).then((res)=>{
       console.log(res.data);
       setprivateSellers(res.data);
      });
-     Axios.post("http://localhost:3001/users/getDealerByType",{userType:"dealer"}).then((res)=>{
+     Axios.post("http://3.111.35.215/users/getDealerByType",{userType:"dealer"}).then((res)=>{
       console.log(res.data);
       setdealers(res.data);
      });
