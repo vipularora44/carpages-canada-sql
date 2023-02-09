@@ -188,7 +188,7 @@ userRouter.route("/allDealers")
             console.log("logout Working");
              // req.session.destroy();
             
-               res.clearCookie('HELLO_USER',{path:"/",domain:'localhost'});
+               res.clearCookie('HELLO_USER',{path:"/",domain:'carpages-canada-sql-frnt.onrender.com'});
           
         
             res.send('user logout successfully');
@@ -483,7 +483,7 @@ userRouter.route("/allDealers")
                         if(result[0].is_verified === "true")
                         {
                            console.log(" 2  false........");
-                           res.redirect("http://localhost:3000/signin");
+                           res.redirect("http://carpages-canada-sql-frnt.onrender.com/signin");
                         }
                         else if(result[0].email_token === token && result[0].is_verified === "false")
                         { console.log("3   false........");
@@ -496,7 +496,7 @@ userRouter.route("/allDealers")
                               }
                               else{
                                  
-                                 res.redirect("http://localhost:3000/signin");
+                                 res.redirect("http://carpages-canada-sql-frnt.onrender.com/signin");
                               }
                            });
                         }
@@ -521,7 +521,7 @@ userRouter.route("/allDealers")
                                              {
                                                 if(result[0].email_token === token)
                                                 {
-                                                   res.redirect("http://localhost:3000/signin");
+                                                   res.redirect("http://carpages-canada-sql-frnt.onrender.com/signin");
                                                 }
                                              }
                                           });
